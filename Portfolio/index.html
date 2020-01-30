@@ -1,0 +1,1662 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Joy Dhar</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <!-- JQuery CDN -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- CDN JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <!-- Add icon library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <!-- Open Sans font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:600,800" rel="stylesheet"> body { position: relative; }
+
+  <!-- Search in table JS -->
+  <script>
+    $(document).ready(function() {
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
+
+  <style media="screen">
+    #page-wrap {
+      max-width: 500px;
+      margin: 1rem auto;
+      padding: 1rem;
+    }
+
+    .font {
+      /* Open Sans font */
+      font-weight: bold;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 400%;
+    }
+
+    .Home {
+      /* background-color: #e6e6e6; */
+      background-color: rgb(137, 207, 228);
+    }
+
+    .selfimage {
+      position: absolute;
+      cursor: pointer;
+      top: 15%;
+      left: 60%;
+      height: 791px;
+      width: 28%;
+    }
+
+    .achivements {
+      background-color: #404040;
+    }
+
+    /* Button on image */
+
+    .imgbtn {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.5);
+      /* Black background with 0.5 opacity */
+      color: #f1f1f1;
+      /* Grey text */
+      top: 66%;
+      left: 40%;
+      text-align: center;
+      cursor: pointer;
+    }
+
+
+
+
+    .gallery {
+      background-color: #404040;
+      padding-bottom: 50px;
+      padding-top: 70px;
+      width: 100%;
+      position: absolute;
+    }
+
+    /* Transparent image text/caption */
+
+    .transparent {
+      position: absolute;
+      /* Position the background text */
+      bottom: 0;
+      /* At the bottom. Use top:0 to append it to the top */
+      background: rgba(0, 0, 0, 0.5);
+      /* Black background with 0.5 opacity */
+      color: #f1f1f1;
+      /* Grey text */
+      width: 914px;
+      /* Full width */
+      left: 300px;
+      padding: 20px;
+      /* Some padding */
+    }
+
+    .carousel-inner img {
+      width: 80%;
+      height: 60%;
+      padding-left: 300px;
+    }
+
+
+
+    .Education {
+      background-color: #e6eeff;
+    }
+
+    .school {
+      font-size: 150%;
+      font-weight: bold;
+    }
+
+    .date {
+      float: right;
+    }
+
+
+    .course1 {
+      font-weight: bold;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .Experience {
+      font-size: 115%;
+      background-color: #e6eeff;
+    }
+
+
+
+    .About {
+      background-color: #E1E1E1;
+    }
+
+    .jumbotron {
+      height: 520px;
+    }
+
+    /* vartical line */
+
+    /* .vl {
+      border-left: 2px dashed Grey;
+      height: 350px;
+      position: absolute;
+    }
+    <div class="vl" style="left: 880px;"></div>*/
+
+    /* profile card */
+
+    .pcard {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      text-align: center;
+      margin-left: 30px;
+      position: absolute;
+      left: 40px;
+    }
+
+    .ptitle {
+      color: grey;
+    }
+
+    /* profile card: end */
+
+    /* contact */
+
+    .text {
+      display: inline-block;
+      position: absolute;
+    }
+
+    /* Flip Card */
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .image-flip:hover .backside,
+    .image-flip.hover .backside {
+      -webkit-transform: rotateY(0deg);
+      -moz-transform: rotateY(0deg);
+      -o-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+
+    .image-flip:hover .frontside,
+    .image-flip.hover .frontside {
+      -webkit-transform: rotateY(180deg);
+      -moz-transform: rotateY(180deg);
+      -o-transform: rotateY(180deg);
+      transform: rotateY(180deg);
+    }
+
+    .image-flip {
+      margin-bottom: 200px;
+      width: 300px;
+      height: 250px;
+    }
+
+    .mainflip {
+      -webkit-transition: 1s;
+      -webkit-transform-style: preserve-3d;
+      -ms-transition: 1s;
+      -moz-transition: 1s;
+      -moz-transform: perspective(1000px);
+      -moz-transform-style: preserve-3d;
+      -ms-transform-style: preserve-3d;
+      transition: 1s;
+      transform-style: preserve-3d;
+      position: relative;
+    }
+
+    .frontside,
+    .backside {
+      -webkit-backface-visibility: hidden;
+      -moz-backface-visibility: hidden;
+      -ms-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transition: 1s;
+      -webkit-transform-style: preserve-3d;
+      -moz-transition: 1s;
+      -moz-transform-style: preserve-3d;
+      -o-transition: 1s;
+      -o-transform-style: preserve-3d;
+      -ms-transition: 1s;
+      -ms-transform-style: preserve-3d;
+      transition: 1s;
+      transform-style: preserve-3d;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .frontside {
+      -webkit-transform: rotateY(0deg);
+      -ms-transform: rotateY(0deg);
+      z-index: 2;
+    }
+
+    .backside {
+      background: white;
+      -webkit-transform: rotateY(-180deg);
+      -moz-transform: rotateY(-180deg);
+      -o-transform: rotateY(-180deg);
+      -ms-transform: rotateY(-180deg);
+      transform: rotateY(-180deg);
+    }
+
+    .card,
+    .card-img-top {
+      border-radius: 0;
+    }
+  </style>
+
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+      <div class="container">
+
+        
+        <a class="navbar-brand active" data-toggle="tooltip" title="Joy Dhar" href="#">Joy Dhar</a>
+
+        <!-- LOGO -->
+        <!-- <a class="navbar-brand active">
+          <img src="img.jpg" alt="Logo" style="width:40px;">
+        </a> -->
+
+        <!-- Collapsable Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+        
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a class="nav-link" href="#Home">Home</a> </li>
+            <li class="nav-item"><a class="nav-link" href="#Education">Education</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Course">Courses</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tooltip" title="Joy is not in any service yet." href="#Service">Service</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Experience">Experience</a></li>
+            <li class="nav-item"><a class="nav-link" href="#Achivements">Achivements</a></li>
+            <li class="nav-item"><a class="nav-link" href="#demo">Gallery</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tooltip" title="Sorry! No blog found." href="#Blog">Blog</a></li>
+            <li class="nav-item"><a class="nav-link" href="#About">About</a></li>
+          </ul>
+
+
+          <!-- Dropdown -->
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle justify-content-end" href="#" id="navbardrop" data-toggle="dropdown">
+                    Download CV
+              </a>
+                <div class="dropdown-menu">
+                  <h6 class="dropdown-header">Select Format</h6>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">PDF</a>
+                  <a class="dropdown-item" href="#">HTML</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="social ">
+            <a href="https://www.facebook.com/joy.uap.cse"><i class="fa fa-facebook" style="font-size:18px; color:white;"></i></a> &nbsp;
+            <a href="https://twitter.com/JoyDhar94589513"><i class="fa fa-twitter" style="font-size:18px; color:white;"></i></a> &nbsp;
+            <a href="https://www.linkedin.com/in/joy-dhar-3176b5194/"><i class="fa fa-linkedin" style="font-size:18px; color:white;"></i></a> &nbsp;
+            <a href="https://github.com/Jooydhar"><i class="fa fa-github" style="font-size:18px; color:white;"></i></a> &nbsp;
+            <a href="https://plus.google.com/118157422290874966669?hl=en"><i class="fa fa-google-plus" style="font-size:18px; color:white;"></i></a>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+
+
+    <div id="Home" class="container-fluid Home " style="padding-top:220px;padding-bottom:230px">
+      <div class="container-fluid" style="padding-top:280px;padding-left:250px;">
+        <h6><b>Hi, This Is</b></h6>
+        <h1 class="font"><b>Joy Dhar</b></h1>
+        <p>DESIGNER &nbsp; DEVELOPER &nbsp; PROGRAMMER </p>
+        <img class="selfimage" src="joy.jpg"style ="width: 800px;height: 800px;">
+
+      </div>
+    </div>
+
+
+    <div id="Education" class="container-fluid Education" style="padding-top:90px;padding-bottom:109px;padding-left:70px">
+      <h2 class="title">Education</h2>
+
+      <hr/>
+      <br>
+
+      <h3>
+      <span class="coursel"><u>Primary School</u></span>
+      <span class="date">JAN 2000 &mdash; DEC 2006</span>
+    </h3>
+
+      <ul>
+        <li>
+          <span style="font-weight:bold;">
+          <u>Institution:</u>Little Flower Tutorial School
+        </span>
+          <br>
+          <span style="font-weight:bold;">
+          <u>Class:</u> Nursery to 5 (JAN 2000 to DEC 2006)
+        </span>
+        </li>
+      </ul>
+
+      <br>
+      <br>
+
+      <h3>
+      <span class="coursel"><u>High School</u></span>
+      <span class="date">JAN 2007 &mdash; DEC 2011</span>
+    </h3>
+
+      <ul>
+        <li>
+          <span style="font-weight:bold;">
+          <u>Institution:</u> Hazi Mohammad Mohsin Govt High School
+        </span>
+          <br>
+          <span style="font-weight:bold;">
+          <u>Class:</u> 6 to 10 (JAN 2007 to DEC 2011)
+        </span>
+        </li>
+      </ul>
+
+      <br>
+      <br>
+
+
+      <h3>
+      <span class="coursel"><u>Secondary School Certificate (SSC)</u></span>
+      <span class="date">Jan 2010 &mdash; Feb 2012</span>
+    </h3>
+      <span class="school"> Hazi Mohammad Mohsin Govt High School</span>
+      <ul>
+        <li>
+          <span style="font-weight:bold;"><span>Major</span>: </span><span>Science</span>
+        </li>
+        <li>
+          <span style="font-weight:bold;"><span>GPA</span>: </span><span>4.69 (on a scale of 5.00)</span>
+        </li>
+      </ul>
+
+
+      <br>
+      <br>
+
+
+      <h3>
+      <span class="coursel"><u>Higher Secondary Certificate (HSC)</u></span>
+      <span class="date">Jun 2012 &mdash; Jun 2014</span>
+    </h3>
+      <span class="school">South Asian College Chittagong (SACC)</span>
+      <ul>
+        <li>
+          <span style="font-weight:bold;"><span>Major</span>: </span><span>Science</span>
+        </li>
+        <li>
+          <span style="font-weight:bold;"><span>GPA</span>: </span><span>4.00 (on a scale of 5.00)</span>
+        </li>
+      </ul>
+
+
+      <br>
+      <br>
+
+
+
+      <h3>
+      <span class="coursel"><u>Bechelors in Computer Science and Engineering (B.CSE)</u></span>
+      <span class="date">Oct 2016 &mdash; Present</span>
+    </h3>
+
+      <span class="school">University of Asia Pacific (UAP)</span>
+      <div>
+        <span>Final (7th) semester ongoing.</span>
+      </div>
+      <ul>
+        <li>
+          <span style="font-weight:bold;">CGPA</span>: <span>3</span><span>.50 (on a scale of 4.00)</span>
+        </li>
+      </ul>
+
+    </div>
+
+
+
+    <div id="Course" class="container-fluid bg-default" style="padding-top:70px;padding-bottom:230px">
+      <div class="container-fluid" style="padding-top:70px;padding-left:70px;">
+
+        <div class="container">
+          <!-- Search bar -->
+          <p>Type something in the input field to search the table for courses by Course code, Course Name, Gained GPA, Instructor, Credit, Semester:</p>
+          <input class="form-control" id="myInput" type="text" placeholder="Search..">
+          <br>
+
+          <h1> <u> <b>Departmental Courses</b> </u> </h1>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark ">
+              <tr>
+                <th>Course Code</th>
+                <th>Course Title</th>
+                <th>Credits</th>
+                <th>Semester</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              <tr>
+                <td>CSE 101</td>
+                <td>Computer Fundamental</td>
+                <td>3.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 101</td>
+                <td>Computer Fundamental Lab</td>
+                <td>1.50</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 103</td>
+                <td>Computer Programming I</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 104</td>
+                <td>Computer Programming Lab</td>
+                <td>1.50</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 105</td>
+                <td>Discrete Mathematics</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 203</td>
+                <td>Computer Programming II</td>
+                <td>3.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 204</td>
+                <td>Computer Programming II Lab</td>
+                <td>1.50</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 205</td>
+                <td>Data Structures</td>
+                <td>3.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 206</td>
+                <td>Data Structures Lab</td>
+                <td>0.75</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 207</td>
+                <td>Algorithm</td>
+                <td>3.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 209</td>
+                <td>Numerical Methods</td>
+                <td>3.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 211</td>
+                <td>Assembly Language Programming</td>
+                <td>2.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 231</td>
+                <td>Digital Logic Design</td>
+                <td>3.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 208</td>
+                <td>Algorithm Lab</td>
+                <td>0.75</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 212</td>
+                <td>Assembly Language Programming Lab</td>
+                <td>0.75</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 232</td>
+                <td>Digital Logic Design Lab</td>
+                <td>1.50</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 321</td>
+                <td>Database Systems</td>
+                <td>3.00</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 331</td>
+                <td>Computer Architechture I</td>
+                <td>3.00</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 300</td>
+                <td>Software Development</td>
+                <td>1.50</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 322</td>
+                <td>Database Systems Lab</td>
+                <td>1.50</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 303</td>
+                <td>Operating System</td>
+                <td>3.00</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 305</td>
+                <td>Information Systems</td>
+                <td>3.00</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 315</td>
+                <td>Data Communication</td>
+                <td>3.00</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 333</td>
+                <td>Microprocessors</td>
+                <td>3.00</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 335</td>
+                <td>Digital System Design</td>
+                <td>3.00</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 304</td>
+                <td>Operating System Lab</td>
+                <td>1.50</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 306</td>
+                <td>Information Systems Lab</td>
+                <td>0.75</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 334</td>
+                <td>Microprocessors Lab</td>
+                <td>1.50</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 336</td>
+                <td>Digital System Design Lab</td>
+                <td>1.50</td>
+                <td> 3-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 401</td>
+                <td>Software Engineering</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 403</td>
+                <td>Compiler Design</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 421</td>
+                <td>Computer Network</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 431</td>
+                <td>Computer Graphics</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>...</td>
+                <td>Simulation & Modeling</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 400</td>
+                <td>Thesis</td>
+                <td>3.00</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 404</td>
+                <td>Compiler Design Lab</td>
+                <td>0.75</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 422</td>
+                <td>Computer Network Lab</td>
+                <td>1.50</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 432</td>
+                <td>Computer Graphics Lab</td>
+                <td>1.50</td>
+                <td> 4-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>CSE 407</td>
+                <td>AI & Expert System</td>
+                <td>3.00</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 411</td>
+                <td>VLSI Design</td>
+                <td>3.00</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 435</td>
+                <td>Computer Interfacing</td>
+                <td>3.00</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE ...</td>
+                <td>Pattern</td>
+                <td>3.00</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 400</td>
+                <td>Thesis</td>
+                <td>3.00</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 408</td>
+                <td>AI & Expert System Lab</td>
+                <td>1.50</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 412</td>
+                <td>VLSI Design Lab</td>
+                <td>1.50</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE 436</td>
+                <td>Computer Interfacing Lab</td>
+                <td>1.50</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>CSE ...</td>
+                <td>Pattern Lab</td>
+                <td>0.75</td>
+                <td> 4-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+
+        <br>
+        <br>
+
+        <hr>
+
+        <div class="container">
+          <h1> <u> <b>Non-Departmental Courses</b> </u> </h1>
+          <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+              <tr>
+                <th>Course Code</th>
+                <th>Course Title</th>
+                <th>Credits</th>
+                <th>Semester</th>
+                <th>Instructor</th>
+              </tr>
+            </thead>
+            <tbody id="myTable">
+              <tr>
+                <td>HSS 101</td>
+                <td>English I</td>
+                <td>3.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>HSS 111(A)</td>
+                <td>Society & Culture</td>
+                <td>2.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>HSS 111(B)</td>
+                <td>Bangladesh History</td>
+                <td>2.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>PHY 101</td>
+                <td>Physics I</td>
+                <td>3.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>MTH 101</td>
+                <td>Math I</td>
+                <td>3.00</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>PHY 102</td>
+                <td>Physics Lab</td>
+                <td>1.50</td>
+                <td> 1-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>HSS 103</td>
+                <td>English II</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>PHY 103</td>
+                <td>Physics II</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>MTH 103</td>
+                <td>Math II</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 101</td>
+                <td>Basic Electrical Engineering</td>
+                <td>3.00</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 102</td>
+                <td>Basic Electrical Engineering Lab</td>
+                <td>1.50</td>
+                <td> 1-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>ACN 201</td>
+                <td>Principle of Accounting</td>
+                <td>2.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>MTH 201</td>
+                <td>Math III</td>
+                <td>3.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECN 201</td>
+                <td>Principle of Economics</td>
+                <td>2.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 201</td>
+                <td>Electronic Devices and Circuits</td>
+                <td>3.00</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 202</td>
+                <td>Electronic Devices and Circuits Lab</td>
+                <td>1.50</td>
+                <td> 2-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>IMG 201</td>
+                <td>Principle of Management</td>
+                <td>2.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>MTH 203</td>
+                <td>Math IV</td>
+                <td>4.00</td>
+                <td> 2-2 </td>
+                <td> ... </td>
+              </tr>
+
+
+              <tr>
+                <td>MTH 301</td>
+                <td>Statistics and Probability</td>
+                <td>2.00</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 301</td>
+                <td>Electrical Drives and Instrumentation</td>
+                <td>1.50</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 303</td>
+                <td>Digital Electronics and Pulse Techniques</td>
+                <td>3.00</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 302</td>
+                <td>Electrical Drives and Instrumentation Lab</td>
+                <td>1.50</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+              <tr>
+                <td>ECE 304</td>
+                <td>Digital Electronics and Pulse Techniques Lab</td>
+                <td>1.50</td>
+                <td> 3-1 </td>
+                <td> ... </td>
+              </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+
+        <br>
+        <br>
+
+      </div>
+    </div>
+
+
+
+
+
+    <div id="Experience" class="container-fluid Experience" style="padding-top:50px;padding-bottom:160px">
+      <div class="container-fluid" style="padding-top:50px;padding-left:80px;font-weight:bold;">
+
+        <h1>Experience</h1>
+
+        <hr/>
+        <br/>
+
+        <span style="font-weight:bold;"> <u>Core Skills</u> : Programming, Database System, Algorithms, Critical Thinking, Logical Reasoning.</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>Working Fields</u> : ACM Programming, Full-stack Web Development, NLP, SVM, N-GRAM.</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>Programming Languages</u> :  Python Programming Language, PHP Programming Language, JavaScript, SQL, C# Programming Language, C/C++.</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>Frameworks/Libraries</u> : Python-Flask (Microframework), BootStrap (CSS Framework), Python-Django (Full-stack web framework).</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>Database</u> </span>: Relational (MySQL).</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>CMS</u> </span>: WordPress.</span>
+        <br/>
+        <br/>
+        <span style="font-weight:bold;"> <u>Software</u>: Microsoft Visual Studio Code, Git.</span>
+        <br/>
+        <br/>
+
+      </div>
+    </div>
+
+    <!-- flip card code -->
+    <!-- <div id="Achivements" class="container-fluid Achivements" style="padding-top:70px;padding-bottom:195px;padding-left:30px;">
+    <h1> Achivements </h1>
+    <hr>
+
+    <div class="card-deck">
+
+      <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+
+        <div class="mainflip">
+          <div class="frontside">
+            <div class="card" style="width:20rem;">
+              <img class="card-img-top img- fluid" src="https://img.webnots.com/2017/04/Bootstrap-Card-Image.png" alt="card image">
+              <div class="card-body">
+                <h4 class="card-title">Card Title</h4>
+                <p class="card-text">This is basic card with image on top, title, description and button.</p>
+              </div>
+            </div>
+          </div>
+ 
+          <div class="backside">
+            <div class="card" style="width:20rem;">
+              <div class="card-header">
+                This is a Header
+              </div>
+              <div class="card-body">
+                <h4 classs="card-title">Card Title</h4>
+                <p clas="card-text">This is a card component with header and footer.</p>
+                <a href="#" class="btn btn-info btn-md">Info Button</a>
+              </div>
+              <div class="card-footer">
+                This is a Footer
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+    <div id="Achivements" class="container-fluid Achivements" style="padding-top:70px;padding-left:30px;">
+      <h1> Achivements </h1>
+      <hr>
+
+      <div class="row">
+
+    
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');" style="padding-top: 50px;">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img class="card-img-top img- fluid" src="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b> </b> </h4>
+                    <p class="card-text"> <b> </b></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- NCPC 2016 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');" style="padding-top: 50px;">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img class="card-img-top img- fluid" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');" style="padding-top: 50px;">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" data-ride="carousel" style="width:20rem;">
+
+                  <img height="165px" class="card-img-top img- fluid" src=""
+                    alt="">
+
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src="">
+                    <a href="#" class="btn btn-info btn-md imgbtn" data-toggle="tooltip" title="Click to see the project."> <b></b> </a>
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- UAP Hardware -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');" style="padding-top: 50px;">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img class="card-img-top img- fluid" height="165px" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" height="165px" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- IEEE EECCMC 2018 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img class="card-img-top img- fluid" src="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src="">
+                  </div>
+                  <div class="card-footer">
+                    <p> <b></b> ( <b></b> ) </p>
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- VC Award Fall 2015 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Spring 2016 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src="6"
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Fall 2016 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Spring 2017 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Fall 2017 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Spring 2018 -->
+        <div class="col-sm-3">
+          <div class="image-flip " ontouchstart="this.classList.toggle('hover');">
+
+            <div class="mainflip">
+              <div class="frontside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <img height="165px" ; class="card-img-top img- fluid" src=""
+                    alt="">
+                  <div class="card-body bg-light">
+                    <h4 class="card-title"> <b></b> </h4>
+                    <p class="card-text"> <b></b> </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="backside">
+                <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width:20rem;">
+                  <div class="card-header">
+                    <b></b>
+                  </div>
+                  <div class="card-body">
+                    <img class="card-img-top img- fluid" src=""
+                      alt="">
+                  </div>
+                  <div class="card-footer">
+                    <b></b>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div id="About" class="container-fluid About" style="padding-top:60px;">
+      <div class="container-fluid" style="padding-top:70px;padding-left:70px;padding-bottom:150px;padding-right:70px;">
+        <div class="jumbotron bg-white shadow-lg p-4 mb-4 ">
+          <h2 class="title">About Me</h2>
+          <hr/>
+
+          <div class="row">
+
+            <div class="col-sm-3">
+              <div class="pcard">
+                <img class="bg-dark" src="joy.jpg"
+                  alt="John" style="width:100%;">
+                <h1>Joy Dhar</h1>
+                <p class="ptitle"></p>
+                <p> <b></b> </p>
+
+                <div style="margin: 24px 0;">
+
+
+                  <a href="https://www.facebook.com/joy.uap.cse"><i class="fa fa-facebook" style="font-size:18px; color:black;"></i></a> &nbsp;
+                  <a href="https://twitter.com/JoyDhar94589513"><i class="fa fa-twitter" style="font-size:18px; color:black;"></i></a> &nbsp;
+                  <a href="https://www.linkedin.com/in/joy-dhar-3176b5194/"><i class="fa fa-linkedin" style="font-size:18px; color:black;"></i></a> &nbsp;
+                  <a href="https://github.com/Jooydhar"><i class="fa fa-github" style="font-size:18px; color:black;"></i></a>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class=" border border-light shadow-lg p-4 mb-4" style=" position: absolute; left: 52px; height: 390px;width:380px;">
+                <h4> <b>Info:</b> </h4>
+                <hr>
+                <h6> <b>Gender:</b> <span> &nbsp; Male </span> </h6>
+                <br>
+                <h6> <b>Date of Birth:</b> <span> &nbsp; 23-July-1996 </span> </h6>
+                <br>
+                <h6> <b>Blood Group:</b> <span> &nbsp; O+ </span> </h6>
+                <br>
+                <h6> <b>Relligious Views:</b> <span> &nbsp; Hindu </span> </h6>
+                <br>
+                <h6> <b>Languages:</b> <span> &nbsp; বাংলা, English, Hindi </span> </h6>
+                <br>
+                <h6> <b>Relationship:</b> <span> &nbsp; Single </span> </h6>
+              </div>
+            </div>
+
+            <div class="col-sm-3">
+              <div class=" border border-light shadow-lg p-4 mb-4" style="position: absolute;height: 390px;width:450px; left: 155px;">
+                <h4> <b>Contact:</b> </h4>
+                <hr>
+
+                <div>
+                  <img class="pull-left" src="http://images.clipartpanda.com/location-icon-iphone-google-plus-local-225x225.jpeg" style="height:16%;width:12%;" alt="my_location">
+                  <div class="text" style="font-size:16px;">
+                    <!-- <i class="pull-left fa fa-map-marker" style="font-size:60px; color:black;"></i> -->
+                    <p> <b>&nbsp; Dewan Bazar Roomghata, Chittagong</b><br><b>&nbsp; Farmgate, Dhaka</b> </p>
+                  </div>
+                </div>
+
+                <br><br><br><br>
+
+                <div>
+                  <img class="pull-left" src="https://cdn2.iconfinder.com/data/icons/apple-ios7-icons/118/mail_ios7_ios_7.png" style="height:16%;width:12%;padding-left:6px;" alt="my_location">
+                  <div class="text" style="font-size:16px;padding-top:10px;">
+                    <p> <b> &nbsp; jooydhar@gmail.com</b> </p>
+                  </div>
+                </div>
+
+                <br><br><br><br>
+
+                <div>
+                  <img class="pull-left" src="https://cdn2.iconfinder.com/data/icons/apple-ios7-icons/118/phone_ios7_ios_7.png" style="height:16%;width:12%;padding-left:6px;" alt="my_location">
+                  <div class="text" style="font-size:16px;">
+                    <p> <b>&nbsp;+880-01700542483</b><br><b>&nbsp;+880-1864662280</b> </p>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div id="demo" class="carousel slide gallery" data-ride="carousel">
+
+      <ul class="carousel-indicators">
+        <li data-target="#demo" data-slide-to="0" class="active"></li>
+        <li data-target="#demo" data-slide-to="1"></li>
+        <li data-target="#demo" data-slide-to="2"></li>
+        <li data-target="#demo" data-slide-to="3"></li>
+        <li data-target="#demo" data-slide-to="4"></li>
+        <li data-target="#demo" data-slide-to="5"></li>
+      </ul>
+
+      <div class="carousel-inner ">
+
+        <div class="carousel-item active">
+          <img src=""
+            width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src=""
+            width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src=""
+            alt="" width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src=""
+            alt="" width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src="" width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+        <div class="carousel-item">
+          <img src=""
+            alt="" width="1100" height="500">
+          <div class="carousel-caption transparent">
+            <h3></h3>
+            <p></p>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#demo" data-slide="prev"><span class="carousel-control-prev-icon"></span></a>
+      <a class="carousel-control-next" href="#demo" data-slide="next"><span class="carousel-control-next-icon"></span></a>
+
+    </div>
+
+
+<script async src="https://drv.tw/inc/wd.js"></script></body>
+
+</html>
