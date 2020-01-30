@@ -64,6 +64,50 @@
     {
         _CustomerLogin();
     }
+
+    
+    if( isset($_POST['signup_btn']) ){
+
+        $a = $_POST['firstName'];
+        $b = $_POST['lastName'];
+        $c = $_POST['email'];
+        $d = $_POST['contactNo'];
+        
+        $e = $_POST['userName'];
+        $f = $_POST['password'];
+        $g = $_POST['address'];
+
+    $server_id = 0;
+
+    $user_query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"select * from user_info order by server_id asc");
+    while( $row = mysqli_fetch_array($user_query) )
+    {
+            $server_id = $row['server_id'];
+    }
+
+    $server_id = $server_id + 1;
+
+   if( !empty($_POST['firstName']) && !empty($_POST['lastName']) &&  !empty($_POST['email']) && !empty($_POST['userName']) &&  !empty($_POST['password']) && !empty($_POST['address']) && !empty($_POST['contactNo'])  )
+    {
+            // All OK
+
+       $query = "INSERT INTO user_info(server_id,first_name,last_name,contact_no , address) values ($server_id,'$a','$b', '$d','$g')";
+		mysqli_query(mysqli_connect('localhost','root','','fooddata'),$query);
+
+    $query = "INSERT INTO user_login(server_id,username,user_password,email) values ($server_id,'$e','$f','$c')";
+ mysqli_query(mysqli_connect('localhost','root','','fooddata'),$query);
+
+       $message = "Registration Successful login to continue";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+
+    }
+    else
+    {
+        // field empty
+       $message = "one or more fields are empty";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+    }
+    }
 ?>
 <html>
 
@@ -126,7 +170,7 @@
             </div>
             <div class="col-sm-4">
                 <span class="glyphicon glyphicon-lock logo-small"></span>
-                <h4>Thai</h4>
+                <h4>Cash on Delivery</h4>
 
             </div>
         </div>
@@ -139,7 +183,7 @@
             </div>
             <div class="col-sm-4">
                 <span class="glyphicon glyphicon-certificate logo-small"></span>
-                <h4>Tasty Dishes</h4>
+                <h4>Tasty Dish</h4>
 
             </div>
             <div class="col-sm-4">
@@ -221,25 +265,29 @@
                 </div>
                 <div class="modal-body text-center">
                     <form method="post" action="">
+
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Email or Username">
+                            <input type="text" class="form-control" name="firstName" placeholder="Firstname">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Firstname">
+                            <input type="text" class="form-control" name="lastName" placeholder="Lastname">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Lastname">
+                            <input type="text" class="form-control" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Email">
+                            <input type="text" class="form-control" name="contactNo" placeholder="Contact No">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Contact No">
+                            <input type="text" class="form-control" name="address" placeholder="Delivery Address">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="userName" placeholder="Username">
                         </div>
                         <div class="form-group ">
                             <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
-                        <button type="submit" class="btn btn-primary" name="login_btn">Login</button>
+                        <button type="submit" class="btn btn-primary" name="signup_btn">Login</button>
                     </form>
                 </div>
 
