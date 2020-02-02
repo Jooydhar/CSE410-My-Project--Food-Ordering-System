@@ -140,12 +140,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#myPage">Home</a>
+                <?php echo '<a class="navbar-brand" href="index.php?userid='.$server_id.'">Home</a>'; ?>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#services">About Us</a></li>
-                    
+                <ul class="nav navbar-nav navbar-right">   
                     <?php
                         echo '<li><a href="menu.php?userid='.$server_id.'">Food Menu</a></li>';
                         if( $_GET['userid'] == "" )
@@ -168,80 +166,44 @@
         <h1>Online Food Order</h1>
         <p>Food at your doorstep</p>
     </div>
-
-    <!-- Container (Services Section) -->
-    <div id="services" class="container-fluid text-center">
-        <h2>SERVICES</h2>
-        <h4>What we offer</h4>
-        <br>
-        <div class="row slideanim">
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-off logo-small"></span>
-                <h4>Fast Food</h4>
-
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-heart logo-small"></span>
-                <h4>Healthy Food</h4>
-
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-lock logo-small"></span>
-                <h4>Cash on Delivery</h4>
-
-            </div>
-        </div>
-        <br><br>
-        <div class="row slideanim">
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-leaf logo-small"></span>
-                <h4>Fresh Food</h4>
-
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-certificate logo-small"></span>
-                <h4>Tasty Dish</h4>
-
-            </div>
-            <div class="col-sm-4">
-                <span class="glyphicon glyphicon-wrench logo-small"></span>
-                <h4 style="color:#303030;">Best Chef</h4>
-
-            </div>
-        </div>
-    </div>
-    <div id="portfolio" class="container-fluid text-center bg-grey">
-        <h2>Customer's Opinion</h2>
-        <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                <li data-target="#myCarousel" data-slide-to="1"></li>
-                <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
-                </div>
-                <div class="item">
-                    <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
-                </div>
-                <div class="item">
-                    <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+    <div class = "container-fluid">
+        <div class="row">
+            <div class = "col-sm-2">
+                <div class="tab">
+                   <?php
+                    $query1 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from catagory");
+                    while ($row = mysqli_fetch_array($query1))
+                    {
+                        echo '<button class="tablinks" onclick="openCity(event, "'.$row['catagory'].'")" id="defaultOpen">'.$row['catagory'].'</button>';
+                    } 
+                    ?> 
                 </div>
             </div>
 
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <div class = "col-sm-10">
+                <?php
+                    $query1 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from catagory");
+                    while ($row = mysqli_fetch_array($query1)) {
+                        $temp = $row['catagory'];
+                        $query2 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from food where food_catagory = '$temp'");
+                        
+                        echo '<div id="'.$temp.'" class="tabcontent">';
+                        while( $row2 = mysqli_fetch_array( $query2 ) ){
+                            // $i = $row2['url'];
+                            // echo "<script type='text/javascript'>alert('$i');</script>";
+                                echo '<div class = "col-sm-4">';
+                                    echo '<img src="../Admin/foodimg/'.$row2['url'].'" style="width: 240px; height: 320px;">';
+                                    echo '<h4>'.$row2['food_name'].'</h4>';
+                                    echo '<p style="text-align: justify;">'.$row2['food_description'].'</p>';
+                                    echo '<label>Price : <span>'.$row2['food_price'].'</span> </label><br>';
+                                    echo '<a href = "#" class="btn btn-sm btn-primary">Add To Cart</a>';
+                                    echo '<a href = "#" class="btn btn-sm btn-primary" style="margin-left: 5px;">View</a>';
+                                echo '</div>';
+                        }
+                        echo '</div>';                          
+                    }
+                ?>    
+            </div>
         </div>
     </div>
     <!-- Login -->
@@ -356,6 +318,23 @@
                 });
             });
         })
+
+        function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
 
     </script>
 

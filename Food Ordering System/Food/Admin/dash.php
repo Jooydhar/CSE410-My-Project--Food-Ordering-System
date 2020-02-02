@@ -13,6 +13,7 @@
             $foodName = $_POST[ 'foodName' ];
             $foodDescription = $_POST[ 'foodDescription' ];
             $catagory = $_POST[ 'foodCatagory' ];
+            $price = $_POST[ 'foodPrice' ];
             $tag = $_POST[ 'foodTag' ];
 
             $food_id = 0;
