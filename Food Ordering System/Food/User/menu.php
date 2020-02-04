@@ -72,6 +72,38 @@
         _CustomerLogin();
     }
 
+    if( isset( $_POST['clear_btn'] ) )
+    {
+        $temp = $_GET['userid'];
+        $user_query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"delete from cart where id = '$temp'");
+    }
+    if( isset( $_POST['order_btn'] ) )
+    {
+        $temp = $_GET['userid'];
+        $oid = 0;
+        $user_query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"select * from food_order");
+        while( $row = mysqli_fetch_array( $user_query ) )
+        {
+            $oid = $row['orderid'];
+        }
+        $oid = $oid + 1;
+
+        $user_query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"select * from cart where id = '$temp'");
+        $succ = 0;
+        while( $row = mysqli_fetch_array( $user_query ) )
+        {
+            $t = $row['fid'];
+            $query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"INSERT into food_order( orderid , id , fid ) values ('$oid' , '$temp' , '$t')");
+            if( $query )
+                $succ = 1;
+        }
+        if( $succ == 1 )
+        {
+            $user_query = mysqli_query(mysqli_connect('localhost','root','','fooddata'),"delete from cart where id = '$temp'");
+            echo "<script type='text/javascript'>alert('Successfully Placed Order , Order Id $oid');</script>";
+        }
+    }
+
     
     if( isset($_POST['signup_btn']) ){
 
@@ -145,7 +177,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">   
                     <?php
-                        echo '<li><a href="menu.php?userid='.$server_id.'">Food Menu</a></li>';
+                        echo '<li><a href="menu.php?userid='.$server_id.'&catid=0">Food Menu</a></li>';
                         if( $_GET['userid'] == "" )
                         {
                             echo '<li><a data-toggle="modal" data-target="#signup"><span class="glyphicon glyphicon-send"></span>Sign Up</a></li>
@@ -154,6 +186,9 @@
                         }
                         else{
                             echo '<li><a href="profile.php?userid='.$server_id.'">Hello '.$_SESSION['first_name'].'</a></li>';
+                            echo '<li><a href="index.php?userid=">Logout</a></li>';
+                            echo '<li><a data-toggle="modal" data-target="#cart"><span class="glyphicon glyphicon-shopping-cart"></span>Cart</a></li>';
+                            echo '<li><a data-toggle="modal" data-target="#history"><span class="glyphicon glyphicon-list-alt"></span>Order History</a></li>';
                         }
                     ?>
 
@@ -169,25 +204,28 @@
     <div class = "container-fluid">
         <div class="row">
             <div class = "col-sm-2">
-                <div class="tab">
+                <h4 style="text-align: center;">Food Catagory</h4>
+                    <ul>
                    <?php
                     $query1 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from catagory");
                     while ($row = mysqli_fetch_array($query1))
                     {
-                        echo '<button class="tablinks" onclick="openCity(event, "'.$row['catagory'].'")" id="defaultOpen">'.$row['catagory'].'</button>';
+                        echo '<li style="list-style-type: none;"><a class="btn btn-primary" href = "menu.php?userid='.$server_id.'&catid='.$row['id'].'"style="border-bottom: 0.5px solid gray; padding: 10px 30px;border-radius: 0px;display:block;">'.$row['catagory'].'</a></li>';
                     } 
-                    ?> 
-                </div>
+                    ?>
+                </ul>
             </div>
 
             <div class = "col-sm-10">
                 <?php
+                    $catid = $_GET['catid'];
+
+                    if( $catid == 0 ){
                     $query1 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from catagory");
                     while ($row = mysqli_fetch_array($query1)) {
                         $temp = $row['catagory'];
                         $query2 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from food where food_catagory = '$temp'");
                         
-                        echo '<div id="'.$temp.'" class="tabcontent">';
                         while( $row2 = mysqli_fetch_array( $query2 ) ){
                             // $i = $row2['url'];
                             // echo "<script type='text/javascript'>alert('$i');</script>";
@@ -196,11 +234,37 @@
                                     echo '<h4>'.$row2['food_name'].'</h4>';
                                     echo '<p style="text-align: justify;">'.$row2['food_description'].'</p>';
                                     echo '<label>Price : <span>'.$row2['food_price'].'</span> </label><br>';
-                                    echo '<a href = "#" class="btn btn-sm btn-primary">Add To Cart</a>';
-                                    echo '<a href = "#" class="btn btn-sm btn-primary" style="margin-left: 5px;">View</a>';
+                                    echo '<a href = "cart.php?userid='.$server_id.'&catid='.$_GET['catid'].'&fid='.$row2['food_id'].'" class="btn btn-sm btn-primary">Add To Cart</a>';
+                                    echo '<a href = "cart.php?userid='.$server_id.'&catid='.$_GET['catid'].'&fid='.$row2['food_id'].'" class="btn btn-sm btn-primary" style="margin-left: 5px;">View</a>';  
                                 echo '</div>';
+
                         }
-                        echo '</div>';                          
+                    }
+                                                  
+                    }
+                    else
+                    {
+                        $query1 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from catagory");
+                    while ($row = mysqli_fetch_array($query1)) {
+                        if( $row['id'] == $catid ){
+                        $temp = $row['catagory'];
+                        $query2 = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from food where food_catagory = '$temp'");
+                        
+                        while( $row2 = mysqli_fetch_array( $query2 ) ){
+                            // $i = $row2['url'];
+                            // echo "<script type='text/javascript'>alert('$i');</script>";
+                                echo '<div class = "col-sm-4">';
+                                    echo '<img src="../Admin/foodimg/'.$row2['url'].'" style="width: 240px; height: 320px;">';
+                                    echo '<h4>'.$row2['food_name'].'</h4>';
+                                    echo '<p style="text-align: justify;">'.$row2['food_description'].'</p>';
+                                    echo '<label>Price : <span>'.$row2['food_price'].'</span> </label><br>';
+                                    echo '<a href = "cart.php?userid='.$server_id.'&catid='.$_GET['catid'].'&fid='.$row2['food_id'].'" class="btn btn-sm btn-primary">Add To Cart</a>';
+                                    echo '<a href = "cart.php?userid='.$server_id.'&catid='.$_GET['catid'].'&fid='.$row2['food_id'].'" class="btn btn-sm btn-primary" style="margin-left: 5px;">View</a>';  
+                                echo '</div>';
+
+                        }
+                    }
+                    }
                     }
                 ?>    
             </div>
@@ -268,6 +332,112 @@
                         </div>
                         <button type="submit" class="btn btn-primary" name="signup_btn">Login</button>
                     </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="cart" role="dialog" style="margin-top: 10%;">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-shopping-cart"></span>     Your Cart</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="">
+                        <?php 
+                            $temp = $_GET['userid'];
+                            $sum = 0;
+                            $query = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from cart as c , food as f where c.fid = f.food_id and c.id = '$temp'");
+                            while( $row = mysqli_fetch_array( $query ) )
+                            {
+                                echo '<h5><span><img src = "../Admin/foodimg/'.$row['url'].'" style = "width : 20px; height : 20px;"</span> '.$row['food_name'].' - '.$row['food_price'].' TK</h5><hr>';
+                                $sum = $sum + $row['food_price'];
+                            }
+                            echo '<h4>Total Amount To Pay : '.$sum.' TK</h4>';
+                        ?>
+                        <button type="submit" class="btn btn-primary" name="order_btn">Place Order</button>
+                        <button type="submit" class="btn btn-primary" name="clear_btn">Clear Cart</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="history" role="dialog" style="margin-top: 10%;">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span class="glyphicon glyphicon-shopping-cart"></span>     Order History</h4>
+                </div>
+                <div class="modal-body">
+                    
+                        <table class="table table-hover">
+                        <thead>
+                          <tr>
+                            <th>Order Id</th>
+                            <th>Food</th>
+                            <th>Price</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                            $p = -1;
+                            $temp = $_GET['userid'];
+                            $sum = 0;
+                            $query = mysqli_query(mysqli_connect('localhost','root','','fooddata') , "select * from food_order as fo , food as f where fo.fid = f.food_id and fo.id = '$temp' order by fo.orderid desc");
+                            while( $row = mysqli_fetch_array( $query ) )
+                            {
+                                if( $row['orderid'] != $p )
+                                {
+                                    if( $sum != 0 )
+                                    {
+                                        echo '<tr style="background-color : #333; color: white;">
+                                        <td></td>
+                                        <td>Total - </td>
+                                        <td>'.$sum.' TK</td>
+                                      </tr>';
+                                      $sum = 0;
+                                    }
+                                    echo '<tr>
+                                        <td>'.$row['orderid'].'</td>
+                                        <td><span><img src = "../Admin/foodimg/'.$row['url'].'" style = "width : 20px; height : 20px;"</span>'.$row['food_name'].'</td>
+                                        <td>'.$row['food_price'].' TK</td>
+                                      </tr>';
+                                }
+                                else
+                                {
+                                    echo '<tr>
+                                        <td></td>
+                                        <td><span><img src = "../Admin/foodimg/'.$row['url'].'" style = "width : 20px; height : 20px;"</span>'.$row['food_name'].'</td>
+                                        <td>'.$row['food_price'].' TK</td>
+                                      </tr>';
+                                }
+                                $sum = $sum + $row['food_price'];
+                                $p = $row['orderid'];
+                            }
+                            if( $sum != 0 )
+                                    {
+                                        echo '<tr style="background-color : #333; color: white;">
+                                        <td></td>
+                                        <td>Total - </td>
+                                        <td>'.$sum.' TK</td>
+                                      </tr>';
+                                      $sum = 0;
+                                    }
+                        ?>
+                        </tbody>
+                        </table>
                 </div>
 
             </div>
